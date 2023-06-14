@@ -1,0 +1,113 @@
+package sql.jdbc;
+
+import main.com.sql.interfaces.IBaseDAO;
+import sql.model.Category;
+import utility.ConnectionPool;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class "HERE" implements IBaseDAO<"HERE"> {
+    private final ConnectionPool conPool = ConnectionPool.getInstance();
+    @Override
+    public void insert(Category category) {
+        String query = "INSERT INTO "HERE" ("HERE") VALUES ("HERE")";
+        Connection con = conPool.getConnect();
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            "HERE"
+            ps.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        finally {
+            conPool.release(con);
+        }
+    }
+
+    @Override
+    public void update(Category category) {
+        Connection con = conPool.getConnect();
+        String query = "UPDATE "HERE" SET "HERE" WHERE "HERE";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            "HERE"
+            ps.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        finally {
+            conPool.release(con);
+        }
+    }
+
+    @Override
+    public void delete(int i) {
+        Connection con = conPool.getConnect();
+        String query = "DELETE FROM "HERE" WHERE "HERE" = ?";
+        try{
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, i);
+            ps.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        finally{
+            conPool.release(con);
+        }
+    }
+
+    @Override
+    public List getAll() {
+        Connection con = conPool.getConnect();
+        List<"HERE"> "HERE" = new ArrayList<"HERE">();
+        String query = "SELECT * FROM "HERE"";
+        try{
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.execute();
+            try{
+                ResultSet rs = ps.getResultSet();
+                while(rs.next()){
+                    "HERE"
+                }
+            }
+            catch (SQLException e){
+                throw new RuntimeException(e);
+            }
+            finally {
+                conPool.release(con);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return "HERE";
+    }
+
+    @Override
+    public "HERE" getById(int i) {
+        "HERE" = new "HERE";
+        String query = "SELECT * FROM "HERE" WHERE "HERE" = ?";
+        Connection con = conPool.getConnect();
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, 1);
+            ps.execute();
+            try{
+                ResultSet rs = ps.getResultSet();
+                while(rs.next()){
+                    "HERE"
+                }
+            }
+            catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        finally {
+            conPool.release(con);
+        }
+        return "HERE";
+    }
+}
